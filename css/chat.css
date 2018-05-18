@@ -1,0 +1,21 @@
+div#__next {
+  display: flex;
+  justify-content: center;
+}
+
+div.chat-wrapper {
+  width: 500px;
+  border: 1px black solid;
+  border-radius: 2%;
+  padding: 30px;
+}
+
+input.chat-input {
+  border: none;
+  border-top: 1px solid #ddd;
+  font-size: 16px;
+  padding: 30px;
+  width: 90%;
+  padding: 20px 10px;
+  margin: 5px;
+}
