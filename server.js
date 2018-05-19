@@ -68,7 +68,7 @@ app.post('/message', function (req, res) {
     const intentData = responses[0].queryResult.parameters.fields
 
     if (result.intent) {
-      return fetchNews(intentData)
+      fetchNews(intentData)
       .then(news => news.articles)
       .then(articles => pusher.trigger('news', 'news-update', articles.splice(0, 6)))
       .then(() => console.log('published to pusher'))
