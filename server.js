@@ -33,9 +33,9 @@ const buildQuery = function (query) {
 }
 
 const fetchNews = function (intentData) {
-  const {source, category} = intentData
+  const {category = {}} = intentData
   const geoCountry = intentData['geo-country']
-  const sourceString = source.listValue.values.map(value => value.stringValue.toLowerCase())
+  // const sourceString = source.listValue.values.map(value => value.stringValue.toLowerCase())
 
   return newsapi.v2.topHeadlines({
     // sources: sourceString.join(','),
