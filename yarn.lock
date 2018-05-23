@@ -1860,6 +1860,10 @@ dir-glob@^2.0.0:
     arrify "^1.0.1"
     path-type "^3.0.0"
 
+dlv@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/dlv/-/dlv-1.1.1.tgz#c79d96bfe659a5568001250ed2aaf653992bdd3f"
+
 dom-walk@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/dom-walk/-/dom-walk-0.1.1.tgz#672226dc74c8f799ad35307df936aba11acd6018"
