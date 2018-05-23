@@ -6,7 +6,7 @@ const Pusher = require('pusher')
 const countryData = require('country-data')
 const dialogflow = require('dialogflow')
 const NewsAPI = require('newsapi')
-const newsapi = new NewsAPI('89d35166eca048379723cb4bc283fa8f')
+const newsapi = new NewsAPI('enter your news API token')
 
 const projectId = 'news-42175'
 const sessionId = 'a-random-session-id'
