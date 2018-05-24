@@ -6,6 +6,7 @@ const Pusher = require('pusher')
 const countryData = require('country-data')
 const dialogflow = require('dialogflow')
 const NewsAPI = require('newsapi')
+const dlv = require('dlv')
 const newsapi = new NewsAPI('enter your news API token')
 
 const projectId = 'news-42175'
@@ -33,15 +34,14 @@ const buildQuery = function (query) {
 }
 
 const fetchNews = function (intentData) {
-  const {category = {}} = intentData
-  const geoCountry = intentData['geo-country']
-  // const sourceString = source.listValue.values.map(value => value.stringValue.toLowerCase())
+  const category = dlv(intentData, 'category.stringValue')
+  const geoCountry = dlv(intentData, 'geo-country.stringValue', '').toLowerCase()
+  const country = dlv(countryDataByName, `${geoCountry}.alpha`, 'us')
 
   return newsapi.v2.topHeadlines({
-    // sources: sourceString.join(','),
-    category: category.stringValue,
+    category,
     language: 'en',
-    country: countryDataByName[geoCountry.stringValue.toLowerCase()] ? countryDataByName[geoCountry.stringValue.toLowerCase()].alpha2 : 'us'
+    country
   })
 }
 
@@ -64,10 +64,10 @@ app.post('/message', function (req, res) {
   .detectIntent(buildQuery(req.body.message))
   .then(responses => {
     console.log('Detected intent')
-    const result = responses[0].queryResult
-    const intentData = responses[0].queryResult.parameters.fields
+    const result = dlv(responses[0], 'queryResult')
+    const intentData = dlv(responses[0], 'queryResult.parameters.fields')
 
-    if (result.intent) {
+    if (result && result.intent) {
       fetchNews(intentData)
       .then(news => news.articles)
       .then(articles => pusher.trigger('news', 'news-update', articles.splice(0, 6)))
