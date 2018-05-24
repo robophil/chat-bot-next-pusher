@@ -36,7 +36,7 @@ const buildQuery = function (query) {
 const fetchNews = function (intentData) {
   const category = dlv(intentData, 'category.stringValue')
   const geoCountry = dlv(intentData, 'geo-country.stringValue', '').toLowerCase()
-  const country = dlv(countryDataByName, `${geoCountry}.alpha`, 'us')
+  const country = dlv(countryDataByName, `${geoCountry}.alpha2`, 'us')
 
   return newsapi.v2.topHeadlines({
     category,

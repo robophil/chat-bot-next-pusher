@@ -66,7 +66,7 @@ export default class Index extends React.Component {
   }
 
   handleKeyPress (e) {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && e.target.value) {
       const message = e.target.value
       this.setState({message: ''})
       this.pushMessage(message)
