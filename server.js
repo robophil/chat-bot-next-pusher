@@ -9,7 +9,7 @@ const NewsAPI = require('newsapi')
 const dlv = require('dlv')
 const newsapi = new NewsAPI('enter your news API token')
 
-const projectId = 'news-42175'
+const projectId = 'project id'
 const sessionId = 'a-random-session-id'
 const languageCode = 'en-US'
 
