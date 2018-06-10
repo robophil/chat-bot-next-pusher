@@ -2,6 +2,8 @@
 
 A chatbot that can help out with news headlines and if you ask it nicely.
 
+[View tutorial](https://pusher.com/tutorials/news-chatbot-nextjs-dialogflow)
+
 ## Getting Started
 
 ```bash
